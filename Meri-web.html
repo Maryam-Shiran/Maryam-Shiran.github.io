@@ -1,0 +1,1328 @@
+ <!DOCTYPE html>
+ <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryam Shiran - Sharif University of Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap');
+        
+        :root {
+            --deep-blue: #1e3a8a;
+            --violet: #7c3aed;
+            --silver: #94a3b8;
+            --glow-blue: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #0f0f23 50%, #1a1a2e 100%);
+        }
+        
+        .math-serif {
+            font-family: 'Crimson Text', serif;
+        }
+        
+        .pi-symbol {
+            font-family: 'Crimson Text', serif;
+            font-size: 18rem;
+            line-height: 1;
+            color: white;
+            text-shadow: 
+                0 0 20px rgba(59, 130, 246, 0.8),
+                0 0 40px rgba(59, 130, 246, 0.6),
+                0 0 60px rgba(59, 130, 246, 0.4);
+            animation: piGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes piGlow {
+            0% {
+                text-shadow: 
+                    0 0 20px rgba(59, 130, 246, 0.8),
+                    0 0 40px rgba(59, 130, 246, 0.6),
+                    0 0 60px rgba(59, 130, 246, 0.4);
+            }
+            100% {
+                text-shadow: 
+                    0 0 30px rgba(124, 58, 237, 0.9),
+                    0 0 60px rgba(124, 58, 237, 0.7),
+                    0 0 90px rgba(124, 58, 237, 0.5);
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1));
+            border: 1px solid transparent;
+        }
+        
+        .nav-link:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .gradient-border {
+            background: linear-gradient(45deg, var(--deep-blue), var(--violet), var(--silver));
+            padding: 1px;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(124, 58, 237, 0.1));
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, rgba(15, 15, 35, 0.8), rgba(26, 26, 46, 0.8));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(59, 130, 246, 0.2),
+                0 0 30px rgba(124, 58, 237, 0.3);
+            border-color: rgba(59, 130, 246, 0.6);
+        }
+        
+        .card-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .card-hover:hover .card-content {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            border-left-color: rgba(59, 130, 246, 0.8);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--glow-blue), var(--violet));
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+        }
+        
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            color: rgba(59, 130, 246, 0.6);
+            font-size: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .glow-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glow-blue), transparent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .pi-symbol {
+                font-size: 10rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .pi-symbol {
+                font-size: 6rem;
+            }
+        }
+        
+        /* Light theme comprehensive styles */
+        .light-theme {
+            background: linear-gradient(135deg, #fefefe 0%, #f8fafc 30%, #f1f5f9 70%, #e2e8f0 100%) !important;
+            color: #1a202c !important;
+        }
+        
+        .light-theme nav {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+            backdrop-filter: blur(10px) !important;
+        }
+        
+        .light-theme .nav-link {
+            color: #2d3748 !important;
+            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.08)) !important;
+        }
+        
+        .light-theme .nav-link:hover {
+            color: #1a202c !important;
+            border-color: rgba(99, 102, 241, 0.5) !important;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.25) !important;
+        }
+        
+        .light-theme .card-hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95)) !important;
+            border: 1px solid rgba(99, 102, 241, 0.15) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+            backdrop-filter: blur(8px) !important;
+        }
+        
+        .light-theme .card-hover:hover {
+            box-shadow: 0 25px 50px rgba(99, 102, 241, 0.2), 0 0 40px rgba(139, 92, 246, 0.15) !important;
+        }
+        
+        .light-theme .gradient-bg {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08)) !important;
+        }
+        
+        .light-theme .timeline-item {
+            border-left-color: rgba(99, 102, 241, 0.4) !important;
+        }
+        
+        .light-theme .timeline-item:hover {
+            border-left-color: rgba(99, 102, 241, 0.8) !important;
+        }
+        
+        .light-theme h1, .light-theme h2, .light-theme h3 {
+            color: #1a202c !important;
+        }
+        
+        .light-theme p {
+            color: #4a5568 !important;
+        }
+        
+        .light-theme .text-gray-300 {
+            color: #718096 !important;
+        }
+        
+        .light-theme .text-gray-400 {
+            color: #a0aec0 !important;
+        }
+        
+        .light-theme .bg-white\/5 {
+            background-color: rgba(0, 0, 0, 0.03) !important;
+        }
+        
+        .light-theme .particle {
+            color: rgba(99, 102, 241, 0.4) !important;
+        }
+        
+        .light-theme .glow-line {
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.7), transparent) !important;
+        }
+        
+        /* Light theme button styles */
+        .light-theme #exploreBtnInner {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3) !important;
+        }
+        
+        .light-theme #exploreBtnInner:hover {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+        }
+        
+        .light-theme #publicationsBtn {
+            color: #6366f1 !important;
+            border-color: rgba(99, 102, 241, 0.6) !important;
+        }
+        
+        .light-theme #publicationsBtn:hover {
+            background: rgba(99, 102, 241, 0.1) !important;
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2) !important;
+        }
+        
+        .light-theme #mobileMenuBtn {
+            color: #374151 !important;
+        }
+        
+        /* Home Section Animations */
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(59, 130, 246, 0.3);
+            animation: floatGently 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes floatGently {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+                opacity: 0.3; 
+            }
+            50% { 
+                transform: translateY(-30px) rotate(180deg); 
+                opacity: 0.7; 
+            }
+        }
+        
+        .glowing-pi {
+            position: relative;
+            text-shadow: 
+                0 0 30px rgba(59, 130, 246, 0.8),
+                0 0 60px rgba(59, 130, 246, 0.6),
+                0 0 90px rgba(59, 130, 246, 0.4);
+            animation: piPulse 4s ease-in-out infinite;
+        }
+        
+        .glowing-pi-shadow {
+            animation: piPulseShadow 4s ease-in-out infinite;
+            filter: blur(2px);
+            opacity: 0.6;
+        }
+        
+        @keyframes piPulse {
+            0%, 100% {
+                text-shadow: 
+                    0 0 30px rgba(59, 130, 246, 0.8),
+                    0 0 60px rgba(59, 130, 246, 0.6),
+                    0 0 90px rgba(59, 130, 246, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                text-shadow: 
+                    0 0 40px rgba(124, 58, 237, 0.9),
+                    0 0 80px rgba(124, 58, 237, 0.7),
+                    0 0 120px rgba(124, 58, 237, 0.5);
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes piPulseShadow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 40px rgba(59, 130, 246, 0.6),
+                    0 0 80px rgba(59, 130, 246, 0.4);
+            }
+            50% {
+                text-shadow: 
+                    0 0 60px rgba(124, 58, 237, 0.8),
+                    0 0 120px rgba(124, 58, 237, 0.6);
+            }
+        }
+        
+        .slide-up {
+            animation: slideUp 1s ease-out 0.2s both;
+        }
+        
+        .slide-up-delay-1 {
+            animation: slideUp 1s ease-out 0.4s both;
+        }
+        
+        .slide-up-delay-2 {
+            animation: slideUp 1s ease-out 0.6s both;
+        }
+        
+        .slide-up-delay-3 {
+            animation: slideUp 1s ease-out 0.8s both;
+        }
+        
+        .slide-up-delay-4 {
+            animation: slideUp 1s ease-out 1s both;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .parallax-content {
+            transform: translateZ(0);
+        }
+        
+        /* Light theme footer styles */
+        .light-theme footer {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+        }
+        
+        .light-theme footer h4 a {
+            color: #6366f1 !important;
+        }
+        
+        .light-theme footer h4 a:hover {
+            color: #4f46e5 !important;
+        }
+        
+        .light-theme footer .text-gray-300 {
+            color: #718096 !important;
+        }
+        
+        .light-theme footer img.filter {
+            filter: invert(0) !important;
+        }
+        
+        /* Force footer icon sizes */
+        footer img {
+            max-width: 40px !important;
+            max-height: 40px !important;
+            width: 40px !important;
+            height: 40px !important;
+        }
+        
+        /* Poetic styling for the poem */
+        .poem-text {
+            font-family: 'Crimson Text', serif !important;
+            font-size: 0.95rem !important;
+            line-height: 1.8 !important;
+            color: rgba(209, 213, 219, 0.9) !important;
+            text-align: center !important;
+            max-width: 28rem !important;
+            margin: 0 auto !important;
+            display: block !important;
+            font-style: italic !important;
+            letter-spacing: 0.5px !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        .light-theme .poem-text {
+            color: rgba(74, 85, 104, 0.9) !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        }
+        
+        /* Light theme specific element colors */
+        .light-theme .text-2xl.math-serif.text-white {
+            color: #4f46e5 !important;
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.6), 0 0 35px rgba(139, 92, 246, 0.4) !important;
+        }
+        
+        .light-theme .pi-symbol.text-gray-400 {
+            color: #6366f1 !important;
+            text-shadow: 0 0 25px rgba(99, 102, 241, 0.7), 0 0 45px rgba(139, 92, 246, 0.5) !important;
+        }
+        
+        .light-theme h4.text-violet-400 {
+            color: #4f46e5 !important;
+        }
+        
+        .light-theme .text-white.font-medium {
+            color: #1a202c !important;
+        }
+        
+        .light-theme .text-blue-400.font-mono {
+            color: #6366f1 !important;
+        }
+        
+        .light-theme h4.text-violet-300 {
+            color: #4f46e5 !important;
+        }
+        
+        .light-theme .text-violet-300 {
+            color: #6366f1 !important;
+        }
+        
+        .light-theme .text-blue-300 {
+            color: #4f46e5 !important;
+        }
+        
+        .light-theme .text-green-300 {
+            color: #059669 !important;
+        }
+        
+        .light-theme .text-purple-300 {
+            color: #7c3aed !important;
+        }
+        
+        .light-theme .text-indigo-300 {
+            color: #6366f1 !important;
+        }
+        
+        .light-theme .text-cyan-300 {
+            color: #0891b2 !important;
+        }
+        
+        .light-theme .bg-violet-500\/20 {
+            background-color: rgba(99, 102, 241, 0.15) !important;
+        }
+        
+        .light-theme .bg-blue-500\/20 {
+            background-color: rgba(59, 130, 246, 0.15) !important;
+        }
+        
+        .light-theme .bg-green-500\/20 {
+            background-color: rgba(16, 185, 129, 0.15) !important;
+        }
+        
+        .light-theme .bg-purple-500\/20 {
+            background-color: rgba(139, 92, 246, 0.15) !important;
+        }
+        
+        .light-theme .text-violet-300 {
+            color: #6366f1 !important;
+        }
+        
+        .light-theme .text-blue-300 {
+            color: #4f46e5 !important;
+        }
+        
+        .light-theme .text-green-300 {
+            color: #059669 !important;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen overflow-x-hidden">
+    <!-- Particles Background -->
+    <div class="particles fixed inset-0 z-0">
+        <div class="particle" style="left: 10%; animation-delay: 0s;">∫</div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;">∇</div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;">∞</div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;">∑</div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;">∂</div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;">∆</div>
+        <div class="particle" style="left: 70%; animation-delay: 1.5s;">∈</div>
+        <div class="particle" style="left: 80%; animation-delay: 2.5s;">∀</div>
+        <div class="particle" style="left: 90%; animation-delay: 3.5s;">∃</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="text-2xl math-serif text-white" style="text-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(124, 58, 237, 0.6);">:)</div>
+                    <div class="text-xl font-semibold math-serif bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+                        Maryam Shiran
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#home" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('home')">Home</a>
+                    <a href="#news" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('news')">News</a>
+                    <a href="#about" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('about')">About</a>
+                    <a href="#research" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('research')">Research</a>
+                    <a href="#publications" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('publications')">Publications</a>
+                    <button id="themeToggle" class="nav-link px-3 py-2 text-sm font-medium rounded-lg" onclick="toggleTheme()">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </div>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()" id="mobileMenuBtn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('home'); toggleMobileMenu()">Home</a>
+                    <a href="#news" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('news'); toggleMobileMenu()">News</a>
+                    <a href="#about" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('about'); toggleMobileMenu()">About</a>
+                    <a href="#research" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('research'); toggleMobileMenu()">Research</a>
+                    <a href="#publications" class="nav-link px-4 py-2 text-sm font-medium rounded-lg" onclick="showSection('publications'); toggleMobileMenu()">Publications</a>
+                    <button class="nav-link px-4 py-2 text-sm font-medium rounded-lg text-left" onclick="toggleTheme(); toggleMobileMenu()">
+                        <span id="mobileThemeIcon">🌙</span> Theme
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 relative z-10">
+        <!-- Home Section -->
+        <section id="home" class="section-content min-h-screen flex items-center justify-center relative overflow-hidden">
+            <!-- Animated Pi Symbol Background -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                <div class="pi-symbol text-gray-400">π</div>
+            </div>
+            
+            <!-- Floating Mathematical Elements -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="floating-element" style="top: 20%; left: 15%; animation-delay: 0s;">∫</div>
+                <div class="floating-element" style="top: 30%; right: 20%; animation-delay: 1s;">∇</div>
+                <div class="floating-element" style="bottom: 25%; left: 10%; animation-delay: 2s;">∞</div>
+                <div class="floating-element" style="bottom: 35%; right: 15%; animation-delay: 3s;">∑</div>
+                <div class="floating-element" style="top: 60%; left: 25%; animation-delay: 4s;">∂</div>
+                <div class="floating-element" style="top: 45%; right: 30%; animation-delay: 5s;">∆</div>
+            </div>
+            
+            <div class="relative z-10 text-center max-w-5xl mx-auto px-6 parallax-content">
+                <!-- Main Pi Symbol with Glow -->
+                <div class="mb-8 relative">
+                    <div class="text-8xl md:text-9xl math-serif text-white glowing-pi mx-auto w-fit">
+                        π
+                    </div>
+                    <div class="absolute inset-0 text-8xl md:text-9xl math-serif text-blue-400 glowing-pi-shadow mx-auto w-fit">
+                        π
+                    </div>
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl font-light mb-4 tracking-tight math-serif bg-gradient-to-r from-white via-blue-200 to-violet-200 bg-clip-text text-transparent slide-up">
+                    Maryam Shiran
+                </h1>
+                
+                <!-- Tagline -->
+                <p class="text-lg md:text-xl text-blue-300 font-light mb-6 italic math-serif slide-up-delay-1">
+                    "Exploring the Infinite Patterns of Mathematics"
+                </p>
+                
+                <div class="glow-line mb-8 slide-up-delay-2"></div>
+                
+                <p class="text-lg md:text-xl text-gray-300 font-light mb-12 leading-relaxed max-w-3xl mx-auto slide-up-delay-3">
+                    Bridging the abstract beauty of pure mathematics with the rigorous foundations of computational science, 
+                    revealing the hidden geometries that govern our universe.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6 justify-center slide-up-delay-4">
+                    <button onclick="showSection('research')" class="gradient-border rounded-lg group" id="exploreBtn">
+                        <div class="px-8 py-3 bg-black rounded-lg font-medium hover:bg-gray-900 transition-all duration-300 flex items-center gap-2" id="exploreBtnInner">
+                            <span>Explore Research</span>
+                            <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                        </div>
+                    </button>
+                    <button onclick="showSection('publications')" class="px-8 py-3 border border-blue-500/50 rounded-lg hover:bg-blue-500/10 hover:border-blue-400 transition-all duration-300 flex items-center gap-2" id="publicationsBtn">
+                        <span>View Publications</span>
+                        <span class="text-xs">📚</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="section-content hidden min-h-screen py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-light mb-12 text-center math-serif bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">Latest Discoveries</h2>
+                <div class="glow-line mb-12"></div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="card-hover p-6 rounded-xl backdrop-blur-sm">
+                        <div class="text-sm text-blue-400 mb-3 font-mono">2024.01.15</div>
+                        <h3 class="text-xl font-semibold mb-3 math-serif">Breakthrough in Topology</h3>
+                        <p class="text-gray-300 leading-relaxed">Revolutionary findings in higher-dimensional manifold structures published in Nature Mathematics.</p>
+                        <div class="card-content mt-4">
+                            <p class="text-sm text-gray-400">This groundbreaking research opens new pathways in understanding complex topological spaces and their applications in quantum computing.</p>
+                        </div>
+                    </article>
+                    <article class="card-hover p-6 rounded-xl backdrop-blur-sm">
+                        <div class="text-sm text-violet-400 mb-3 font-mono">2024.01.08</div>
+                        <h3 class="text-xl font-semibold mb-3 math-serif">AI Mathematics Symposium</h3>
+                        <p class="text-gray-300 leading-relaxed">Keynote presentation at the International AI-Mathematics Conference in Geneva.</p>
+                        <div class="card-content mt-4">
+                            <p class="text-sm text-gray-400">Exploring the intersection of artificial intelligence and pure mathematics, revealing new computational approaches to classical problems.</p>
+                        </div>
+                    </article>
+                    <article class="card-hover p-6 rounded-xl backdrop-blur-sm">
+                        <div class="text-sm text-blue-400 mb-3 font-mono">2023.12.20</div>
+                        <h3 class="text-xl font-semibold mb-3 math-serif">Quantum Research Grant</h3>
+                        <p class="text-gray-300 leading-relaxed">$2.5M NSF grant awarded for quantum topology research initiative.</p>
+                        <div class="card-content mt-4">
+                            <p class="text-sm text-gray-400">This funding will support a 5-year research program investigating topological quantum computing applications.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-content hidden min-h-screen py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-light mb-16 text-center math-serif bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">About</h2>
+                <div class="glow-line mb-16"></div>
+                
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Photo Section -->
+                    <div class="relative group">
+                        <div class="relative overflow-hidden rounded-2xl">
+                            <!-- Professional Photo Placeholder with Dark Overlay -->
+                            <div class="aspect-[4/5] bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-2xl relative overflow-hidden">
+                                <!-- Blurred Background Pattern -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-violet-900/20 to-gray-900/40"></div>
+                                <div class="absolute inset-0 backdrop-blur-sm"></div>
+                                
+                                <!-- Mathematical Symbols Background -->
+                                <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                                    <div class="text-9xl text-blue-400 math-serif">∫</div>
+                                </div>
+                                
+                                <!-- Professional Photo Placeholder -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="w-48 h-48 rounded-full bg-gradient-to-br from-blue-500/30 to-violet-500/30 flex items-center justify-center text-6xl">
+                                        👨‍🔬
+                                    </div>
+                                </div>
+                                
+                                <!-- Subtle Glow Effect -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                            </div>
+                            
+                            <!-- Hover Glow Effect -->
+                            <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/0 to-violet-500/0 group-hover:from-blue-500/10 group-hover:to-violet-500/10 transition-all duration-500"></div>
+                        </div>
+                        
+                        <!-- Photo Caption -->
+                        <div class="mt-6 text-center">
+                            <p class="text-sm text-gray-400 italic">Principal Researcher, Institute for Advanced Mathematical Studies</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Philosophy Section -->
+                    <div class="space-y-8">
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-light math-serif text-blue-400 mb-6">Intellectual Vision</h3>
+                            
+                            <div class="space-y-6 text-gray-300 leading-relaxed">
+                                <p class="text-lg font-light">
+                                    Mathematics is not merely a tool for computation—it is the language through which the universe 
+                                    expresses its deepest truths. My research philosophy centers on the belief that abstract 
+                                    mathematical structures reveal fundamental patterns that govern both the infinitely large 
+                                    and the infinitesimally small.
+                                </p>
+                                
+                                <p class="text-lg font-light">
+                                    At the intersection of <span class="text-blue-400 font-medium">pure mathematics</span> and 
+                                    <span class="text-violet-400 font-medium">computational science</span>, I explore how 
+                                    topological invariants, geometric flows, and algebraic structures can illuminate the 
+                                    hidden architectures of reality—from quantum field theories to the emergent behaviors 
+                                    of artificial intelligence.
+                                </p>
+                                
+                                <p class="text-lg font-light">
+                                    My academic journey has been guided by the conviction that mathematical beauty and 
+                                    practical utility are not opposing forces, but complementary aspects of a unified 
+                                    understanding. Each theorem proved, each conjecture explored, brings us closer to 
+                                    comprehending the elegant mathematical symphony that underlies existence itself.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Academic Journey -->
+                        <div class="pt-8 border-t border-gray-700/50">
+                            <h4 class="text-xl font-light math-serif text-violet-400 mb-6">Academic Journey</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-blue-900/20 to-violet-900/20 border border-blue-500/20">
+                                    <div>
+                                        <span class="text-white font-medium">Ph.D. Mathematics</span>
+                                        <p class="text-sm text-gray-400">Algebraic Topology & Quantum Geometry</p>
+                                    </div>
+                                    <span class="text-blue-400 font-mono text-sm">MIT • 2008</span>
+                                </div>
+                                <div class="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-violet-900/20 to-blue-900/20 border border-violet-500/20">
+                                    <div>
+                                        <span class="text-white font-medium">M.S. Mathematics</span>
+                                        <p class="text-sm text-gray-400">Differential Geometry</p>
+                                    </div>
+                                    <span class="text-violet-400 font-mono text-sm">Stanford • 2004</span>
+                                </div>
+                                <div class="flex items-center justify-between p-4 rounded-lg bg-gradient-to-r from-blue-900/20 to-violet-900/20 border border-blue-500/20">
+                                    <div>
+                                        <span class="text-white font-medium">B.S. Mathematics</span>
+                                        <p class="text-sm text-gray-400">Pure Mathematics, Summa Cum Laude</p>
+                                    </div>
+                                    <span class="text-blue-400 font-mono text-sm">Harvard • 2002</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section-content hidden min-h-screen py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-light mb-16 text-center math-serif bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">Research Portfolio</h2>
+                <div class="glow-line mb-16"></div>
+                
+                <!-- Ongoing Research Section -->
+                <div class="mb-20">
+                    <div class="flex items-center gap-4 mb-12">
+                        <div class="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+                        <h3 class="text-2xl font-light math-serif text-blue-400">Ongoing Research</h3>
+                        <div class="flex-1 h-px bg-gradient-to-r from-blue-400/50 to-transparent"></div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Project 1 -->
+                        <div class="research-card group cursor-pointer">
+                            <div class="p-8 rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-blue-500/20 hover:border-blue-400/60 transition-all duration-500 hover:transform hover:scale-105">
+                                <div class="text-4xl mb-6 text-blue-400 group-hover:scale-110 transition-transform duration-300">∫</div>
+                                <h4 class="text-xl font-semibold mb-4 math-serif text-white">Topological Quantum Error Correction</h4>
+                                <p class="text-gray-300 text-sm mb-4 leading-relaxed">Developing novel error correction codes using algebraic topology for fault-tolerant quantum computing systems.</p>
+                                
+                                <!-- Expandable Details -->
+                                <div class="research-details opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-500">
+                                    <div class="pt-4 border-t border-gray-700/50 mt-4">
+                                        <p class="text-xs text-gray-400 mb-3">
+                                            <strong>Abstract:</strong> Investigating homological methods for constructing quantum error-correcting codes with improved threshold properties and reduced overhead.
+                                        </p>
+                                        <p class="text-xs text-gray-400 mb-3">
+                                            <strong>Collaborators:</strong> Dr. Sarah Chen (MIT), Prof. Michael Torres (Caltech)
+                                        </p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Topology</span>
+                                            <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Quantum</span>
+                                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Error Correction</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 -->
+                        <div class="research-card group cursor-pointer">
+                            <div class="p-8 rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-violet-500/20 hover:border-violet-400/60 transition-all duration-500 hover:transform hover:scale-105">
+                                <div class="text-4xl mb-6 text-violet-400 group-hover:scale-110 transition-transform duration-300">∇</div>
+                                <h4 class="text-xl font-semibold mb-4 math-serif text-white">Geometric Deep Learning Architectures</h4>
+                                <p class="text-gray-300 text-sm mb-4 leading-relaxed">Applying differential geometry to design neural networks that respect geometric symmetries and invariances.</p>
+                                
+                                <div class="research-details opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-500">
+                                    <div class="pt-4 border-t border-gray-700/50 mt-4">
+                                        <p class="text-xs text-gray-400 mb-3">
+                                            <strong>Abstract:</strong> Developing neural architectures based on Riemannian manifolds for improved performance on geometric data.
+                                        </p>
+                                        <p class="text-xs text-gray-400 mb-3">
+                                            <strong>Collaborators:</strong> Dr. Elena Rodriguez (Stanford), Prof. James Liu (Berkeley)
+                                        </p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Geometry</span>
+                                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Deep Learning</span>
+                                            <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Manifolds</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 -->
+                        <div class="research-card group cursor-pointer">
+                            <div class="p-8 rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-blue-500/20 hover:border-blue-400/60 transition-all duration-500 hover:transform hover:scale-105">
+                                <div class="text-4xl mb-6 text-blue-400 group-hover:scale-110 transition-transform duration-300">∞</div>
+                                <h4 class="text-xl font-semibold mb-4 math-serif text-white">Arithmetic Dynamics & Cryptography</h4>
+                                <p class="text-gray-300 text-sm mb-4 leading-relaxed">Exploring connections between number theory and dynamical systems for next-generation cryptographic protocols.</p>
+                                
+                                <div class="research-details opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-96 transition-all duration-500">
+                                    <div class="pt-4 border-t border-gray-700/50 mt-4">
+                                        <p class="text-xs text-gray-400 mb-3">
+                                            <strong>Abstract:</strong> Investigating elliptic curve dynamics over finite fields for post-quantum cryptographic applications.
+                                        </p>
+                                        <p class="text-xs text-gray-400 mb-3">
+                                            <strong>Collaborators:</strong> Dr. Ahmed Hassan (Oxford), Prof. Lisa Wang (Princeton)
+                                        </p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Number Theory</span>
+                                            <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Cryptography</span>
+                                            <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Dynamics</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Future Research Section -->
+                <div>
+                    <div class="flex items-center gap-4 mb-12">
+                        <div class="w-3 h-3 bg-violet-400 rounded-full animate-pulse"></div>
+                        <h3 class="text-2xl font-light math-serif text-violet-400">Future Directions</h3>
+                        <div class="flex-1 h-px bg-gradient-to-r from-violet-400/50 to-transparent"></div>
+                    </div>
+                    
+                    <!-- Timeline/Roadmap -->
+                    <div class="relative">
+                        <!-- Animated Curve Line -->
+                        <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-violet-400 via-blue-400 to-violet-400 opacity-60"></div>
+                        
+                        <div class="space-y-12">
+                            <!-- Future Project 1 -->
+                            <div class="relative flex items-start gap-8">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-white font-bold text-sm z-10">
+                                    2025
+                                </div>
+                                <div class="flex-1 p-6 rounded-xl bg-gradient-to-br from-violet-900/20 to-blue-900/20 border border-violet-500/30">
+                                    <h4 class="text-lg font-semibold math-serif text-violet-300 mb-3">Quantum-Classical Hybrid Algorithms</h4>
+                                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                        Developing mathematical frameworks for seamless integration between quantum and classical computational paradigms, 
+                                        focusing on optimization problems in high-dimensional spaces.
+                                    </p>
+                                    <div class="flex items-center gap-4 text-xs text-gray-400">
+                                        <span>🎯 Open Questions</span>
+                                        <span>🔬 Theoretical Foundation</span>
+                                        <span>🤝 Seeking Collaborators</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Future Project 2 -->
+                            <div class="relative flex items-start gap-8">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center text-white font-bold text-sm z-10">
+                                    2026
+                                </div>
+                                <div class="flex-1 p-6 rounded-xl bg-gradient-to-br from-blue-900/20 to-violet-900/20 border border-blue-500/30">
+                                    <h4 class="text-lg font-semibold math-serif text-blue-300 mb-3">Mathematical Consciousness Models</h4>
+                                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                        Exploring topological and algebraic approaches to modeling consciousness and cognition, 
+                                        bridging neuroscience with abstract mathematical structures.
+                                    </p>
+                                    <div class="flex items-center gap-4 text-xs text-gray-400">
+                                        <span>🧠 Interdisciplinary</span>
+                                        <span>🔮 Speculative</span>
+                                        <span>📊 Data-Driven</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Future Project 3 -->
+                            <div class="relative flex items-start gap-8">
+                                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center text-white font-bold text-sm z-10">
+                                    2027
+                                </div>
+                                <div class="flex-1 p-6 rounded-xl bg-gradient-to-br from-violet-900/20 to-blue-900/20 border border-violet-500/30">
+                                    <h4 class="text-lg font-semibold math-serif text-violet-300 mb-3">Universal Mathematical Languages</h4>
+                                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                        Investigating category theory and type theory foundations for creating universal mathematical 
+                                        communication protocols between artificial intelligence systems.
+                                    </p>
+                                    <div class="flex items-center gap-4 text-xs text-gray-400">
+                                        <span>🌐 Universal</span>
+                                        <span>🤖 AI Integration</span>
+                                        <span>🔗 Foundational</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="section-content hidden min-h-screen py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-light mb-16 text-center math-serif bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">Academic Publications</h2>
+                <div class="glow-line mb-16"></div>
+                
+                <div class="space-y-6">
+                    <!-- Publication 1 -->
+                    <article class="publication-card group cursor-pointer">
+                        <div class="p-6 rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-blue-500/20 hover:border-blue-400/60 transition-all duration-300">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-semibold math-serif text-blue-400 mb-2 group-hover:text-blue-300 transition-colors">
+                                        Topological Quantum Computing: A Mathematical Framework
+                                    </h3>
+                                    <div class="flex items-center gap-4 text-sm text-gray-400 mb-2">
+                                        <span class="font-medium text-white">Nature Mathematics</span>
+                                        <span>•</span>
+                                        <span class="font-mono text-violet-400">2024</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 mt-4 lg:mt-0">
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-blue-500/20 text-blue-300 text-xs rounded hover:bg-blue-500/30 transition-colors">
+                                        <span>📄</span> DOI
+                                    </button>
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-violet-500/20 text-violet-300 text-xs rounded hover:bg-violet-500/30 transition-colors">
+                                        <span>📁</span> PDF
+                                    </button>
+                                    <button class="expand-btn text-gray-400 hover:text-white transition-colors">
+                                        <span class="expand-icon">▼</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                Comprehensive mathematical foundation for topological quantum computing systems using advanced algebraic topology.
+                            </p>
+                            
+                            <!-- Expandable Content -->
+                            <div class="publication-details max-h-0 overflow-hidden transition-all duration-500">
+                                <div class="pt-4 border-t border-gray-700/50 space-y-4">
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-blue-300 mb-2">Abstract</h4>
+                                        <p class="text-xs text-gray-400 leading-relaxed">
+                                            This paper establishes a rigorous mathematical framework for topological quantum computing by leveraging 
+                                            advanced concepts from algebraic topology. We introduce novel homological methods for constructing 
+                                            fault-tolerant quantum gates and demonstrate their superior error correction properties. The framework 
+                                            provides both theoretical foundations and practical algorithms for implementing topological quantum computers.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-violet-300 mb-2">Co-Authors</h4>
+                                        <p class="text-xs text-gray-400">Dr. Sarah Chen (MIT), Prof. Michael Torres (Caltech), Dr. Yuki Tanaka (RIKEN)</p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Quantum Computing</span>
+                                        <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Topology</span>
+                                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Error Correction</span>
+                                        <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Homology</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Publication 2 -->
+                    <article class="publication-card group cursor-pointer">
+                        <div class="p-6 rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-violet-500/20 hover:border-violet-400/60 transition-all duration-300">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-semibold math-serif text-violet-400 mb-2 group-hover:text-violet-300 transition-colors">
+                                        Prime Distributions in Quantum Fields
+                                    </h3>
+                                    <div class="flex items-center gap-4 text-sm text-gray-400 mb-2">
+                                        <span class="font-medium text-white">Annals of Mathematics</span>
+                                        <span>•</span>
+                                        <span class="font-mono text-blue-400">2023</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 mt-4 lg:mt-0">
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-violet-500/20 text-violet-300 text-xs rounded hover:bg-violet-500/30 transition-colors">
+                                        <span>📄</span> DOI
+                                    </button>
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-blue-500/20 text-blue-300 text-xs rounded hover:bg-blue-500/30 transition-colors">
+                                        <span>📁</span> PDF
+                                    </button>
+                                    <button class="expand-btn text-gray-400 hover:text-white transition-colors">
+                                        <span class="expand-icon">▼</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                Novel approaches to understanding prime number distributions using quantum field theoretical methods.
+                            </p>
+                            
+                            <div class="publication-details max-h-0 overflow-hidden transition-all duration-500">
+                                <div class="pt-4 border-t border-gray-700/50 space-y-4">
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-violet-300 mb-2">Abstract</h4>
+                                        <p class="text-xs text-gray-400 leading-relaxed">
+                                            We establish deep connections between prime number theory and quantum field theory, revealing 
+                                            how the distribution of primes can be understood through the lens of quantum mechanical systems. 
+                                            This work opens new avenues for both number theory and quantum physics research.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-blue-300 mb-2">Co-Authors</h4>
+                                        <p class="text-xs text-gray-400">Prof. Elena Rodriguez (Stanford), Dr. James Liu (Berkeley)</p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Number Theory</span>
+                                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Quantum Fields</span>
+                                        <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Prime Numbers</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Publication 3 -->
+                    <article class="publication-card group cursor-pointer">
+                        <div class="p-6 rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-blue-500/20 hover:border-blue-400/60 transition-all duration-300">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-semibold math-serif text-blue-400 mb-2 group-hover:text-blue-300 transition-colors">
+                                        Geometric Deep Learning: Mathematical Foundations
+                                    </h3>
+                                    <div class="flex items-center gap-4 text-sm text-gray-400 mb-2">
+                                        <span class="font-medium text-white">Journal of Machine Learning Research</span>
+                                        <span>•</span>
+                                        <span class="font-mono text-violet-400">2023</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 mt-4 lg:mt-0">
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-blue-500/20 text-blue-300 text-xs rounded hover:bg-blue-500/30 transition-colors">
+                                        <span>📄</span> DOI
+                                    </button>
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-violet-500/20 text-violet-300 text-xs rounded hover:bg-violet-500/30 transition-colors">
+                                        <span>📁</span> PDF
+                                    </button>
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-gray-500/20 text-gray-300 text-xs rounded hover:bg-gray-500/30 transition-colors">
+                                        <span>💻</span> Code
+                                    </button>
+                                    <button class="expand-btn text-gray-400 hover:text-white transition-colors">
+                                        <span class="expand-icon">▼</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                Mathematical framework for geometric deep learning using differential geometry and topology.
+                            </p>
+                            
+                            <div class="publication-details max-h-0 overflow-hidden transition-all duration-500">
+                                <div class="pt-4 border-t border-gray-700/50 space-y-4">
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-blue-300 mb-2">Abstract</h4>
+                                        <p class="text-xs text-gray-400 leading-relaxed">
+                                            This paper provides rigorous mathematical foundations for geometric deep learning by establishing 
+                                            connections between neural network architectures and differential geometric structures. We demonstrate 
+                                            how geometric principles can guide the design of more effective and interpretable machine learning models.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-violet-300 mb-2">Co-Authors</h4>
+                                        <p class="text-xs text-gray-400">Dr. Ahmed Hassan (Oxford), Prof. Lisa Wang (Princeton)</p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Deep Learning</span>
+                                        <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Differential Geometry</span>
+                                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Neural Networks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Publication 4 -->
+                    <article class="publication-card group cursor-pointer">
+                        <div class="p-6 rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-violet-500/20 hover:border-violet-400/60 transition-all duration-300">
+                            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-semibold math-serif text-violet-400 mb-2 group-hover:text-violet-300 transition-colors">
+                                        Homological Methods in Quantum Topology
+                                    </h3>
+                                    <div class="flex items-center gap-4 text-sm text-gray-400 mb-2">
+                                        <span class="font-medium text-white">Communications in Mathematical Physics</span>
+                                        <span>•</span>
+                                        <span class="font-mono text-blue-400">2022</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 mt-4 lg:mt-0">
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-violet-500/20 text-violet-300 text-xs rounded hover:bg-violet-500/30 transition-colors">
+                                        <span>📄</span> DOI
+                                    </button>
+                                    <button class="publication-link flex items-center gap-2 px-3 py-1 bg-blue-500/20 text-blue-300 text-xs rounded hover:bg-blue-500/30 transition-colors">
+                                        <span>📁</span> PDF
+                                    </button>
+                                    <button class="expand-btn text-gray-400 hover:text-white transition-colors">
+                                        <span class="expand-icon">▼</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                                Advanced homological techniques for computing quantum topological invariants of complex spaces.
+                            </p>
+                            
+                            <div class="publication-details max-h-0 overflow-hidden transition-all duration-500">
+                                <div class="pt-4 border-t border-gray-700/50 space-y-4">
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-violet-300 mb-2">Abstract</h4>
+                                        <p class="text-xs text-gray-400 leading-relaxed">
+                                            We develop sophisticated homological techniques for computing topological invariants in quantum systems, 
+                                            providing new tools for understanding the topological phases of matter and their applications in 
+                                            quantum information processing.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-sm font-semibold text-blue-300 mb-2">Co-Authors</h4>
+                                        <p class="text-xs text-gray-400">Dr. Maria Gonzalez (CERN), Prof. David Kim (Seoul National University)</p>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Homology</span>
+                                        <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded">Quantum Topology</span>
+                                        <span class="px-2 py-1 bg-violet-500/20 text-violet-300 text-xs rounded">Invariants</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 px-6 text-center border-t border-gray-700/50">
+        <h4 class="text-lg font-semibold mb-4">
+            <a href="https://www.linkedin.com/in/maryam-shiran/" class="text-violet-300 hover:text-violet-200 transition-colors" target="_blank">
+                <u>Website Developed by :)</u>
+            </a>
+            <br>
+            <a href="mailto:maryam.shiran@epfl.ch" class="text-blue-300 hover:text-blue-200 transition-colors">maryam.shiran@epfl.ch</a>
+            <br><br>
+            <span class="poem-text">
+                What they never see,<br>
+                Is that we love you simply for who you are.<br>
+                No empty coin of gold—given or withheld—<br>
+                Could ever change the warmth in our hearts.<br><br>
+                So live your life fully,<br>
+                In every breath, in every spark.<br><br>
+                —From a friend
+            </span>
+        </h4>
+
+        <ul class="flex justify-center space-x-6 mt-6">
+            <li>
+                <a href="https://www.linkedin.com/in/maryam-shiran/" target="_blank" class="hover:opacity-75 transition-opacity">
+                    <img src="./linkedin.svg" alt="linkedin-social" height="40px" width="40px" class="filter invert"/>
+                </a>
+            </li>
+            <li>
+                <a href="https://people.epfl.ch/maryam.shiran/?lang=en" target="_blank" class="hover:opacity-75 transition-opacity">
+                    <img src="./EPFL.svg" alt="EPFL-profile" height="40px" width="40px"/>
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                targetSection.classList.add('fade-in');
+                
+                // Remove animation class after animation completes
+                setTimeout(() => {
+                    targetSection.classList.remove('fade-in');
+                }, 1000);
+            }
+        }
+        
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (!nav.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Animate particles
+        function animateParticles() {
+            const particles = document.querySelectorAll('.particle');
+            particles.forEach(particle => {
+                const randomY = Math.random() * window.innerHeight;
+                const randomDelay = Math.random() * 5;
+                particle.style.top = randomY + 'px';
+                particle.style.animationDelay = randomDelay + 's';
+            });
+        }
+        
+        // Initialize particles
+        animateParticles();
+        
+        // Re-animate particles every 10 seconds
+        setInterval(animateParticles, 10000);
+        
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+            
+            if (body.classList.contains('light-theme')) {
+                // Switch to dark theme
+                body.classList.remove('light-theme');
+                themeIcon.textContent = '🌙';
+                mobileThemeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                // Switch to light theme
+                body.classList.add('light-theme');
+                themeIcon.textContent = '☀️';
+                mobileThemeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        
+        // Initialize theme on page load
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const themeIcon = document.getElementById('themeIcon');
+            const mobileThemeIcon = document.getElementById('mobileThemeIcon');
+            
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeIcon.textContent = '☀️';
+                mobileThemeIcon.textContent = '☀️';
+            } else {
+                themeIcon.textContent = '🌙';
+                mobileThemeIcon.textContent = '🌙';
+            }
+        }
+        
+        // Initialize theme when page loads
+        document.addEventListener('DOMContentLoaded', initializeTheme);
+        
+        // Publication expand/collapse functionality
+        document.addEventListener('click', function(event) {
+            if (event.target.closest('.expand-btn')) {
+                const expandBtn = event.target.closest('.expand-btn');
+                const publicationCard = expandBtn.closest('.publication-card');
+                const details = publicationCard.querySelector('.publication-details');
+                const icon = expandBtn.querySelector('.expand-icon');
+                
+                if (details.style.maxHeight && details.style.maxHeight !== '0px') {
+                    // Collapse
+                    details.style.maxHeight = '0px';
+                    icon.textContent = '▼';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Expand
+                    details.style.maxHeight = details.scrollHeight + 'px';
+                    icon.textContent = '▲';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
